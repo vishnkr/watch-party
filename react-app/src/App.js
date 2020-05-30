@@ -3,26 +3,37 @@ import {BrowserRouter as Router,Route,withRouter,Switch} from 'react-router-dom'
 import Landing from './components/Landing';
 import Video from './components/Video';
 import YTSession from './components/YTSession';
-
+import NavBar from './components/NavBar';
+import './components/search.css';
 function App() {
 
   const [sessionID, setSessionID] = useState('');
-  const [host,setHost] = useState('');
+  const [isHost,setIsHost] = useState(false);
   const [vidID,setVidID] = useState('');
+  const [userActionType,setUserActionType] = useState('join-room');
 
-  const createSession = (vidID, session, leaderbool) => {
+  const newSession = (vidID, session) => {
     setVidID(vidID);
     setSessionID(session);
-    setHost(leaderbool);
+    setIsHost(true);
+    setUserActionType('create-room');
   };
+
+  const defaultSession = () =>{
+
+  }
   return (
+    
     <Router>
     <div className="App">
+    
       <div className='container'>
-        <Route exact path='/' render={() => <Landing session={createSession} />} />
-        <Route exact path='/video/host' render={() => <YTSession vid_id='j1ZRyw7OtZs' />} />
-        <Route exact path ='/youtube' component={withRouter(Video)} />
+     
+        <NavBar />
+        <Route exact path='/' render={() => <Landing session={newSession} />} />
+        <Route exact path='/video=:vidID/sess=:sessionID' render={() => <YTSession vidID={vidID} sessionID={sessionID} isHost={isHost} userAction={userActionType} />} />
       </div>
+
       
     </div>
     </Router>

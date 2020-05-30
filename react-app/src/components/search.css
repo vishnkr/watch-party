@@ -8,21 +8,13 @@ body {
 }
 
 form {
-    /* This bit sets up the horizontal layout */
     display:flex;
     flex-direction:row;
-    
-    /* This bit draws the box around it */
     border:1px solid grey;
-  
-    /* I've used padding so you can see the edges of the elements. */
     padding:2px;
   }
 
-
-
 button {
-    /* Just a little styling to make it pretty */
     border:1px solid blue;
     background:rgb(130, 163, 51);
     color:white;
@@ -37,9 +29,14 @@ button {
 .search__title {
         font-size: 22px;
         font-weight: 900;
+        font-family: sans-serif;
         text-align: center;
         color: #000000;
     }
+
+.bright{
+    background-color: #e0ecff;
+}
 
 .search__input {
         flex-grow: 2;
@@ -60,7 +57,7 @@ button {
         background-size: 18px 18px;
         background-position: 95% center;
         border-radius: 50px;
-        border: 1px solid #575756;
+        border: 1px solid #ffffff;
         transition: all 250ms ease-in-out;
         backface-visibility: hidden;
         transform-style: preserve-3d;
@@ -80,25 +77,4 @@ button {
             border-bottom: 1px solid #575756;
             border-radius: 0;
             background-position: 100% center;
-        }
-
-.credits__container {
-        margin-top: 24px;
-    }
-
-.credits__text {
-        text-align: center;
-        font-size: 13px;
-        line-height: 18px;
-    }
-
-.credits__link {
-        color: #ff8b88;
-        text-decoration: none;
-        transition: color 250ms ease-in;
-    }
-
-.credits__link:hover,
-        .credits__link:focus {
-            color: rgb(191, 137, 135);
         }
