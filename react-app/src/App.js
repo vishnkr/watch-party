@@ -20,7 +20,7 @@ function App() {
   };
 
   const defaultSession = () =>{
-
+    
   }
   return (
     
@@ -31,7 +31,7 @@ function App() {
      
         <NavBar />
         <Route exact path='/' render={() => <Landing session={newSession} />} />
-        <Route exact path='/video=:vidID/sess=:sessionID' render={() => <YTSession vidID={vidID} sessionID={sessionID} isHost={isHost} userAction={userActionType} />} />
+        <Route path='/watch/:sessionID/:vidID' render={() => <YTSession vidID={vidID} sessionID={sessionID} isHost={isHost} userAction={userActionType} />} />
       </div>
 
       
