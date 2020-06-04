@@ -34,10 +34,6 @@ button {
         color: #000000;
     }
 
-.bright{
-    background-color: #e0ecff;
-}
-
 .search__input {
         flex-grow: 2;
         width: 100%;
@@ -62,12 +58,6 @@ button {
         backface-visibility: hidden;
         transform-style: preserve-3d;
     }
-
-.search__input::placeholder {
-            color: rgba(87, 87, 86, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
 
 .search__input:hover,
         .search__input:focus {
