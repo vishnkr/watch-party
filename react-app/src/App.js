@@ -31,7 +31,8 @@ function App() {
      
         <NavBar />
         <Route exact path='/' render={() => <Landing session={newSession} />} />
-        <Route path='/watch/:sessionID/:vidID' render={() => <YTSession vidID={vidID} sessionID={sessionID} isHost={isHost} userAction={userActionType} />} />
+        <Route exact path='/watch/host/:sessionID/:vidID' render={() => <YTSession vidID={vidID} sessionID={sessionID} isHost={isHost} userAction={'create-room'} />} />
+        <Route exact path='/watch/:sessionID/:vidID' render={() => <YTSession vidID={vidID} sessionID={sessionID} isHost={isHost} userAction={userActionType} />} />
       </div>
 
       

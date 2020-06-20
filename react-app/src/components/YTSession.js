@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Video from './Video';
@@ -7,16 +7,16 @@ import socketIOClient from 'socket.io-client';
 
 const Share = (props) =>{
   const history = useHistory();
-  var share_url = "localhost:3000"+history.location.pathname.replace('host',props.link);
+  var share_url = "localhost:3000"+history.location.pathname.replace('host/','');
   return(
     <div className="container">
       <input size="50" className="sharelink" value={share_url}/>
     </div>
   );
 }
-
 const YTSession = (props) =>{
-    const socket = socketIOClient("localhost:3000");
+    
+    const socket = socketIOClient("localhost:8000");
     console.log('ytsession props:',props);
     let check = useParams();
     console.log("check:",check);
@@ -28,11 +28,13 @@ const YTSession = (props) =>{
     if(!checkVidID){
         checkVidID=props.vidID;
     }
+    
     console.log("checkvid, checksess",checkVidID,checksessionID);
     return(
         <div className='container'>
             <Video vid_id={checkVidID} isHost={props.isHost} socket={socket} />
             {props.isHost && <Share link={props.sessionID} />}
+            
         </div>
     );
 }

@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from 'react';
-import socketIOClient from 'socket.io-client';
 import "./video.css";
 
+
+var player;
 function Video(props){
     const [videoID, setvideoID] = useState(props.vid_id ? props.vid_id : null);
-    
+    const [socket,setSocket] = useState(props.socket);
+
     const opts = {
         height: '390',
         width: '640',
@@ -13,8 +15,8 @@ function Video(props){
         },
       };
 
-    function onYouTubeIframeAPIReady() {
-      var player;
+    const onYouTubeIframeAPIReady = () =>{
+      
       player = new window.YT.Player('player', {
           height: '390',
           width: '640',
@@ -30,17 +32,21 @@ function Video(props){
         if (event.data == window.YT.PlayerState.PLAYING && !done) {
           done = true;
         }
+        console.log("cur-time:",  player.getCurrentTime());
+        socket.emit('time-sync',player.getCurrentTime())
       }
     function onPlayerReady(event) {
         event.target.playVideo();
       }
     useEffect(()=>{
-      props.socket.on('message',(event)=>{
-        console.log(event);
-      });
       if(!props.isHost){
         joinRoom(videoID);
       }
+      
+      socket.on('connection',()=>{
+        console.log('new-connection');
+      });
+      
       if (typeof(window.YT) == 'undefined' || typeof(window.YT.Player) == 'undefined') {
         console.log('reaches');
         var tag = document.createElement('script');
@@ -50,10 +56,8 @@ function Video(props){
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       } else onYouTubeIframeAPIReady();
-
+      
       });
-
-    
     const joinRoom = (vidID)=>{
       setvideoID(vidID)
     }

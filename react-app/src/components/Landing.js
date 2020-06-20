@@ -3,13 +3,11 @@ import DisplayImage from '../assets/image.svg';
 import {useHistory} from 'react-router-dom';
 import './search.css';
 import { uuid } from 'uuidv4';
-import socketIOClient from 'socket.io-client';
 
 function Landing(props){
     const [url,setURL] = useState('');
     const [response,setResponse] = useState('');
     const history = useHistory();
-    console.log('history:',history);
 
     const youtubeParser = (url) => {
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
@@ -27,18 +25,11 @@ function Landing(props){
         if (!url_id) {
             return;
           }
-        history.push('/watch/host/'+url_id);
+        history.push('/watch/host/'+sessionID+'/'+url_id);
         console.log('history:',history);
-        
         return;
-        
     }
-    useEffect(() => {
-        const socket = socketIOClient("localhost:8000");
-        socket.on("FromAPI", data => {
-          setResponse(data);
-        });
-      }, []);
+    
     
     return (
                 <div>
@@ -46,7 +37,7 @@ function Landing(props){
                 
                 <div class="search__container">
                 <p class="search__title" >
-                    Watch videos in sync with friends It's <time dateTime={response}>{response}</time>
+                    Watch videos in sync with friends, Socket:<time dateTime={response}>{response}</time>
                 </p>
                 <form onSubmit={onSubmit}>
                 <input class="search__input" type="text" onChange={e=> setURL({url: e.target.value})} placeholder="Enter YouTube Link" />
