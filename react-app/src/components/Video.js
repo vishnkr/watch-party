@@ -28,23 +28,31 @@ function Video(props){
         });
       }
       var done = false;
+      
       function onPlayerStateChange(event) {
+        var data = {
+          'current_time' : 0,
+          'video_state': 'play'
+         }
         if (event.data == window.YT.PlayerState.PLAYING && !done) {
           done = true;
         }
-        console.log("cur-time:",  player.getCurrentTime());
-        socket.emit('time-sync',player.getCurrentTime())
+        if (event.data == window.YT.PlayerState.PAUSED) {
+          data.video_state = 'pause';
+        }
+        data.current_time = player.getCurrentTime();
+        socket.emit('time-sync',data);
       }
     function onPlayerReady(event) {
         event.target.playVideo();
       }
     useEffect(()=>{
-      if(!props.isHost){
-        joinRoom(videoID);
-      }
-      
+      socket.on('current-time',(data)=>{
+        console.log('received data from socket:',data);
+        player.seekTo(data.current_time);
+      });
       socket.on('connection',()=>{
-        console.log('new-connection');
+        
       });
       
       if (typeof(window.YT) == 'undefined' || typeof(window.YT.Player) == 'undefined') {
@@ -58,12 +66,10 @@ function Video(props){
       } else onYouTubeIframeAPIReady();
       
       });
-    const joinRoom = (vidID)=>{
-      setvideoID(vidID)
-    }
+    
     return (
         <div className="videoWrap"> 
-              <div id='player'></div>
+            <div id='player'></div>
         </div>
     );
 }

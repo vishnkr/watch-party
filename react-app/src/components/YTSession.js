@@ -16,7 +16,7 @@ const Share = (props) =>{
 }
 const YTSession = (props) =>{
     
-    const socket = socketIOClient("localhost:8000");
+    const socket = socketIOClient("http://localhost:8000");
     console.log('ytsession props:',props);
     let check = useParams();
     console.log("check:",check);
