@@ -1,0 +1,99 @@
+#root {
+    height: 100vh;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .options-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  
+  .main-container {
+    display: flex;
+    width: 40%;
+    
+    min-width: 600px;
+    transition: 0.2s all;
+  }
+  .main-container section {
+    
+    padding: 0 7%;
+    color: #333;
+  }
+  .main-container section h2,
+  .main-container section input {
+    margin: 0;
+  }
+  .main-container section input {
+    border: 0 !important;
+    border-radius: 30px !important;
+    padding: 12px 16px !important;
+    width: 100% !important;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .heading {
+    color: #444;
+    font-size: 2em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #444;
+  }
+  
+  .search-bar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 15px 20px !important;
+  }
+
+  .search-bar .input {
+        width: 100%;
+  }
+
+  .button-join {
+    color: #fff !important;
+    background: #43a3f0 !important;
+    padding: 15px 20px !important;
+    border-radius: 30px !important;
+    width: 40%;
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2) !important;
+    transition: all 0.2s;
+  }
+  
+  .button-join:hover {
+    opacity: 0.9;
+  }
+  
+  .title-container{
+    margin: 20px 0;
+  }
+  
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+  }
+  .logo-container h1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-weight: 900;
+    font-size: 3.5em;
+    margin: 0;
+    line-height: 0.8;
+  }
+  .primaryColor {
+    color: #d48928;
+  }
+  /*#3262d9;  #43a3f0;*/
+  .secondaryColor {
+    color: #43a3f0;
+  }
+  

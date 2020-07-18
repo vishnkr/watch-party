@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+nav {
+    background: #222;
+    padding: 0 15px;
+    display: flex;
+}
+
+.menu {   
+    list-style-type: none;
+}
+.logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+}
+.item {
+    padding: 10px;
+}
+.item.button {
+    padding: 9px 5px;
+}
+.item:not(.button) a:hover,
+.item a:hover::after {
+    color: #ccc;
+}
+
+
+.logoContainer {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .logoContainer h6 {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+    font-weight: 900;
+    font-size: 2.0em;
+    margin: 0;
+    line-height: 0.8;
+  }
+  .primaryColor {
+    color: #d48928;
+  }
+  /*#3262d9;  #43a3f0;*/
+  .secondaryColor {
+    color: #43a3f0;
+  }

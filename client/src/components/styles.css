@@ -1,0 +1,76 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    min-height: 100vh;
+  }
+
+.options-container{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
+    display: flex;
+    flex-direction: column nowrap;
+    flex-flow: column;
+    align-items: stretch;
+    justify-content: stretch;
+    background-color: yellow;
+}
+
+.title-container{
+    display: flex;
+    flex: 2;
+    background-color: aqua;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.button1-container{
+    display: flex;
+    flex: 2;
+    background-color: goldenrod;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.button2-container{
+    display: flex;
+    flex: 2;
+    background-color: blueviolet;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+/*
+.landing-form {
+    position:relative;
+    width:auto;
+}
+.transition-create {
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    overflow:hidden;
+    transition:all 1s ease-in;
+}
+
+.transition-join {
+    position:absolute;
+    top:30px;
+    left:-100%;
+    width:100%;
+    overflow:hidden;
+    transition:all 1s ease-in;
+}
+
+.active {
+    left:0;
+}*/

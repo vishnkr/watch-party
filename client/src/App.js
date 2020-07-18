@@ -1,10 +1,11 @@
 import React,{useState} from 'react';
 import {BrowserRouter as Router,Route,withRouter,Switch} from 'react-router-dom'; 
-import Landing from './components/Landing';
-import Video from './components/Video';
+import Landing from './components/Landing/Landing';
+import Video from './components/Video/Video';
 import YTSession from './components/YTSession';
-import NavBar from './components/NavBar';
-import './components/search.css';
+import NavBar from './components/NavBar/NavBar';
+import 'semantic-ui-css/semantic.min.css'
+
 function App() {
 
   const [sessionID, setSessionID] = useState('');
@@ -26,9 +27,7 @@ function App() {
     
     <Router>
     <div className="App">
-    
       <div className='container'>
-     
         <NavBar />
         <Route exact path='/' render={() => <Landing session={newSession} />} />
         <Route exact path='/watch/host/:sessionID/:vidID' render={() => <YTSession vidID={vidID} sessionID={sessionID} isHost={isHost} userAction={'create-room'} />} />

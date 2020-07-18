@@ -7,19 +7,11 @@ function Video(props){
     const [videoID, setvideoID] = useState(props.vid_id ? props.vid_id : null);
     const [socket,setSocket] = useState(props.socket);
 
-    const opts = {
-        height: '390',
-        width: '640',
-        playerVars: {
-          autoplay: 0,
-        },
-      };
-
     const onYouTubeIframeAPIReady = () =>{
       
       player = new window.YT.Player('player', {
-          height: '390',
-          width: '640',
+          height: '690',
+          width: '1040',
           videoId: videoID,
           events: {
             'onReady': onPlayerReady,
@@ -48,8 +40,10 @@ function Video(props){
       }
     useEffect(()=>{
       socket.on('current-time',(data)=>{
-        console.log('received data from socket:',data);
-        player.seekTo(data.current_time);
+        if(Math.abs(data.current_time-player.getCurrentTime())>4){
+          console.log('received data from socket:',data);
+          player.seekTo(data.current_time);
+        }
       });
       socket.on('connection',()=>{
         
@@ -68,7 +62,7 @@ function Video(props){
       });
     
     return (
-        <div className="videoWrap"> 
+        <div className="video"> 
             <div id='player'></div>
         </div>
     );
