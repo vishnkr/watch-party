@@ -1,2 +1,2 @@
-### YT-Watch Party
-A YouTube application that allows multiple users to watch videos in sync together.
+### Watch Party
+Watch Party is a video streaming platform that allows users to watch videos in synchronization on their devices with a built-in chat feature.
