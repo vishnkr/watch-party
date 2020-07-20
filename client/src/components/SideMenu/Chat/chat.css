@@ -5,6 +5,7 @@
     border-left: 0 !important;
     border-right: 0 !important;
     padding: 1em !important;
+    
   }
 
 #send-icon {
@@ -18,10 +19,17 @@
   pointer-events: all !important;
 }
 
-
-
-
-
+.chatContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  height: 75%;
+  width: 100%;
+  font-size: 0.9em;
+  overflow-y: hidden;
+}
 
 .messageBox {
   border-radius: 20px;
@@ -47,8 +55,9 @@
 .messageContainer {
   display: flex;
   justify-content: flex-end;
-  padding: 0 5%;
-  margin: 3px 0;
+  padding: 2px 5%;
+  
+  background-color: #f2f2f2;
 }
 .messageContainer section {
   margin: 0 4px;
@@ -117,4 +126,42 @@
 }
 .textCenter {
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+  cursor: pointer;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+
+.messages {
+  /* padding: 5% 0; */
+  overflow: auto;
+  flex: auto;
+  background-color: #f2f2f2;
+}
+/*
+.messageOuterContainer:last-child {
+  margin-bottom: 20px;
+}
+.messageOuterContainer:first-child {
+  margin-top: 20px;
+}*/
+
+
+.welcome-message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 1% 1%;
 }

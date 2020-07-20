@@ -4,31 +4,38 @@
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
-    flex-direction: column nowrap;
-    flex-flow: column;
     align-items: stretch;
     justify-content: stretch;
-    background-color: yellow;
 }
 
 .mid-row{
-    display: flex;
-    background-color: violet;
-    flex: 20;
-    flex-direction: row;
-    flex-flow: row;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+  overflow-x: hidden;
 }
 
-.sharelink{
+.share{
     display: flex;
-    background-color: green;
     justify-content: center;
-}
-.sharelink .input-container{
+    padding: 1% 0% 1% 5%;
     flex-flow: row nowrap;
-    width: 60%;
+}
+.text{
+    display: flex;
+    max-width: max-content;
     justify-content: center;
+    align-items: center;
+}
+.input-copy{
+    display: flex;
+    padding-left: 2%;
+    right: 1%;
+    bottom: 0;
+    left: 0;
 }
 
 .sharelink .text{
@@ -40,17 +47,15 @@
 
 .vid-container{
     display: flex;
-    background-color: coral;
-    align-items: center;
-    justify-content: center;
+    background-color: #ffffff;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex: 3;
 }
 
 .sidemenu{
-    background-color: #f2f2f2;
-    max-height: auto;
-    flex: 1;
-    position: relative;
+    background-color: #f0f0f0;
+
 }
 
 .react-player{

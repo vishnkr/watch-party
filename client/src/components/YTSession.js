@@ -5,15 +5,15 @@ import Video from './Video/Video';
 import './Video/video.css';
 import socketIOClient from 'socket.io-client';
 import './Video/watch.css';
-import Chat from '../SideMenu/Chat/Chat';
-import SideMenu from '../SideMenu/SideMenu';
+import Chat from './SideMenu/Chat/Chat';
+import SideMenu from './SideMenu/SideMenu';
+import { Input } from 'semantic-ui-react'
+import {generator} from '../name-generator/generator';
 
-/*
-<div className="container">
-      <input size="50" className="sharelink" value={share_url}/>
-    </div>*/
+
 const Share = (props) =>{
   const history = useHistory();
+  console.log(history);
   var share_url = "localhost:3000"+history.location.pathname.replace('host/','');
   const [text, setText] = useState('link');
   const textAreaRef = useRef(null);
@@ -28,23 +28,27 @@ const Share = (props) =>{
   }
   return(
     
-    <div className='input-container'>
-      <h3 className='text'>Share this link</h3>
-      <form className='input-form'>
-        <input
-          className='input-field'
-          readonly
-          value={share_url}
-        />
-        <button className='input-button' onClick={copyToClipboard}>
-          Copy
-        </button>
-      </form>
+    <div className='share'>
+      <div className="text">
+        <h3>Share this link</h3>
+      </div>
+      <div className="input-copy">
+      <Input
+        action={{
+          color: 'teal',
+          labelPosition: 'right',
+          icon: 'copy',
+          content: 'Copy',
+          size:'small',
+        }}
+        defaultValue={share_url}
+      />
+      </div>
     </div>
   );
 }
 const YTSession = (props) =>{
-    
+    const [userName,setUserName] = useState(generator);
     const socket = socketIOClient("http://localhost:8000");
     console.log('ytsession props:',props);
     let check = useParams();
@@ -70,7 +74,7 @@ const YTSession = (props) =>{
                   <Video vid_id={checkVidID} isHost={props.isHost} socket={socket} />
                   </div>
                   <div className="sidemenu">
-                    <SideMenu />
+                    <SideMenu username={userName}/>
                   </div>
                 </div>
                 

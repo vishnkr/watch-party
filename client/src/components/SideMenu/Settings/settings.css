@@ -1,0 +1,11 @@
+.settings-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 75%;
+    width: 100%;
+    font-size: 0.9em;
+    overflow-y: hidden;
+  }
