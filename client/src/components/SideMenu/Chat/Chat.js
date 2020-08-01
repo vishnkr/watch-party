@@ -69,10 +69,11 @@ const ChatContent = (props) =>{
 function Chat(props){
     const [messages,setMessages] = useState([]);
     const [myMessage,setMyMessage] = useState('');
-    const [curSocket,setCurSocket] = useState(null);
+    const [curSocket,setCurSocket] = useState(props.socket);
     const [username,setUserName] = useState(props.username);
     const handleChange =(e)=>{
         var sendIcon = document.getElementById("send-icon");
+        setMyMessage(e.target.value);
         if(e.target.value.length >0){
             sendIcon.classList.add('colorChange');
         }
@@ -85,20 +86,20 @@ function Chat(props){
         e.preventDefault();
         let trimMessage = myMessage.trim();
         if (trimMessage.length > 0) { //check whitespace
-            curSocket.emit('send-message',{'user':username,'message':trimMessage});
+            curSocket.emit('send-message',{'user':username,'message':trimMessage},()=>setMyMessage(''));
         }
     }
-    const welcomeMessage = "Hey " + props.username +", Welcome to your Watch Party Room"+"!! Invite your friends by sharing the above link!"
+    const welcomeMessage = "Hey " + username +", Welcome to your Watch Party Room"+"!! Invite your friends by sharing the above link!"
     return (
         <div className="chatContainer">
             <section className="welcome-message">
                 {welcomeMessage}
             </section>
-            <ChatContent username={props.username} />
+            <ChatContent username={username} />
             <div className="input">
                 <Input onChange={handleChange} size="large" icon className="chat-input" fluid placeholder='Type message...'>
                 <input />
-                <Icon id="send-icon" name='send' />
+                <Icon id="send-icon" name='send' onClick={e=> sendMessage(e)}/>
                 </Input>
             </div>
         </div>

@@ -49,8 +49,9 @@ const Share = (props) =>{
 }
 const YTSession = (props) =>{
     const [userName,setUserName] = useState(generator);
-    const socket = socketIOClient("http://localhost:8000");
+    const [socket,setSocket] = useState(socketIOClient("http://localhost:8000"));
     console.log('ytsession props:',props);
+    
     let check = useParams();
     console.log("check:",check);
     let checksessionID = check.sessionID;
@@ -62,7 +63,6 @@ const YTSession = (props) =>{
         checkVidID=props.vidID;
     }
     
-    console.log("checkvid, checksess",checkVidID,checksessionID);
     return(
         
         <div className="watch-container">
@@ -71,10 +71,10 @@ const YTSession = (props) =>{
               </div>
               <div className="mid-row">
                   <div className="vid-container">
-                  <Video vid_id={checkVidID} isHost={props.isHost} socket={socket} />
+                  <Video vid_id={checkVidID} sessionID={checksessionID} username={userName} isHost={props.isHost} socket={socket} />
                   </div>
                   <div className="sidemenu">
-                    <SideMenu username={userName}/>
+                    <SideMenu username={userName} socket={socket}/>
                   </div>
                 </div>
                 

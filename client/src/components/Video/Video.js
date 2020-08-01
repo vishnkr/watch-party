@@ -26,10 +26,10 @@ function Video(props){
           'current_time' : 0,
           'video_state': 'play'
          }
-        if (event.data == window.YT.PlayerState.PLAYING && !done) {
+        if (event.data === window.YT.PlayerState.PLAYING && !done) {
           done = true;
         }
-        if (event.data == window.YT.PlayerState.PAUSED) {
+        if (event.data === window.YT.PlayerState.PAUSED) {
           data.video_state = 'pause';
         }
         data.current_time = player.getCurrentTime();
@@ -37,6 +37,7 @@ function Video(props){
       }
     function onPlayerReady(event) {
         event.target.playVideo();
+        socket.emit('join-room',{sessionID:props.sessionID,username:props.username,isHost:props.isHost});
       }
     useEffect(()=>{
       socket.on('current-time',(data)=>{
@@ -45,10 +46,11 @@ function Video(props){
           player.seekTo(data.current_time);
         }
       });
-      socket.on('connection',()=>{
-        
-      });
-      
+      /*
+      socket.on('join-sync-time',(clientID)=>{
+        socket.broadcast.to(clientID).emit('return-sync-time',clientID,player.getCurrentTime());
+      })*/
+     
       if (typeof(window.YT) == 'undefined' || typeof(window.YT.Player) == 'undefined') {
         console.log('reaches');
         var tag = document.createElement('script');

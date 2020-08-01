@@ -13,7 +13,7 @@ function SideMenu(props){
         console.log(activeItem);
     }
 
-    const menuItems = {'chat':<Chat username={props.username} />, 'viewers':<Viewers username={props.username} />, 'settings':<Settings /> }
+    const menuItems = {'chat':<Chat username={props.username} socket={props.socket} />, 'viewers':<Viewers username={props.username} />, 'settings':<Settings /> }
 
     return(
         <div className="panelContainer">

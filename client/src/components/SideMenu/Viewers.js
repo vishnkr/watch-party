@@ -9,6 +9,7 @@ function Viewers(props){
         <div className="viewers-container">
             <h3>Viewers</h3>
                 <Item.Group>
+                    
                     <Item>
                     <Item.Image size='tiny' >
                         <Avatar name={props.username} size="40" />
